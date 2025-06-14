@@ -1,4 +1,4 @@
-mport matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 import seaborn as sns
 
 # iris 데이터 불러오기
