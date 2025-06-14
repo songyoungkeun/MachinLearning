@@ -1,0 +1,31 @@
+mport matplotlib.pyplot as plt
+import seaborn as sns
+
+# iris 데이터 불러오기
+iris = sns.load_dataset('iris')
+
+# 색상 매핑 (species별 고유 색상)
+species_unique = iris['species'].unique()
+colors = ['red', 'green', 'blue']
+color_map = dict(zip(species_unique, colors))
+
+# 그래프 크기 설정
+plt.figure(figsize=(10, 5))
+
+# species별로 점 그리기
+for species in species_unique:
+    subset = iris[iris['species'] == species]
+    plt.scatter(
+        subset.petal_length,
+        subset.petal_width,
+        c=color_map[species],
+        label=species
+    )
+
+# 축 이름과 범례 추가
+plt.xlabel("Petal Length")
+plt.ylabel("Petal Width")
+plt.title("Iris Petal Length vs Width by Species")
+plt.legend(title="Species")  # 범례 추가
+
+plt.show()
